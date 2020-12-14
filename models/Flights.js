@@ -22,6 +22,9 @@ const FlightSchema = mongoose.Schema({
     via:{
         type:Array,
         default:null,
+    },
+    price:{
+        type:Number
     }
 })
 

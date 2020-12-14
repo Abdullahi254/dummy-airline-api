@@ -2,11 +2,12 @@ const express = require('express');
 const app = express();
 const flights = require('./routes/flights')
 const mongoose = require('mongoose')
+const cors = require('cors')
 require('dotenv').config()
 
 //middleware
 app.use(express.json())
-
+app.use(cors());
 app.use('/api/flightsinfo',flights)
 
 

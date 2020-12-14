@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const e = require('express');
 const Flights = require('../models/Flights')
 
 const dayObj = {
@@ -68,6 +69,24 @@ router.get('/:from/:to',(req,res)=>{
         })
     })
         
+})
+
+router.put('/',async (req,res)=>{
+    try{
+        const flights = await Flights.updateMany({
+            from:req.body.from,
+            to:req.body.to,
+        },{
+            price:req.body.price
+        })
+        res.json(flights)
+    }catch(er){
+        res.json(
+            {
+                msg:er
+            }
+        )
+    }
 })
 
 router.post('/',(req,res)=>{
